@@ -13,10 +13,43 @@ body {
   .box-shadow(inset 0px -4px 4px -4px #000000);
 }
 
-.outer-wrapper, .content-wrapper, .sidebar, .content {
+.outer-wrapper, .sidebar, .content {
   height: 100%;
 }
 
+.sidebar, .content {
+  float: left;
+  .box-sizing(border-box);
+}
+
 .sidebar {
+  width: 25%;
   border-right: 4px solid @gray-lighter;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    li {
+      border-bottom: 1px solid @gray-lighter;
+
+      a {
+        display: block;
+        padding: 10px 15px;
+        color: @gray-dark;
+        font-weight: bold;
+        text-decoration: none;
+
+        &:active, &:hover {
+          background-color: #768ca4;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.content {
+  width: 75%;
 }
