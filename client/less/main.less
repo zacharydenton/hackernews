@@ -1,1 +1,22 @@
 @import "bootstrap/bootstrap.lessimport";
+@import "variables.lessimport";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  padding-top: @navbar-height;
+}
+
+.navbar {
+  .box-shadow(inset 0px -4px 4px -4px #000000);
+}
+
+.outer-wrapper, .content-wrapper, .sidebar, .content {
+  height: 100%;
+}
+
+.sidebar {
+  border-right: 4px solid @gray-lighter;
+}

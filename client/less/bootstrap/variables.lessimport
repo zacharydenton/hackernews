@@ -14,7 +14,7 @@
 @gray-dark:              lighten(#000, 20%);   // #333
 @gray:                   lighten(#000, 33.5%); // #555
 @gray-light:             lighten(#000, 60%);   // #999
-@gray-lighter:           lighten(#000, 93.5%); // #eee
+@gray-lighter:           #d9d9d9;
 
 // Brand colors
 // -------------------------
@@ -171,15 +171,15 @@
 
 // Basics of a navbar
 @navbar-height:                    50px;
-@navbar-color:                     #777;
-@navbar-bg:                        #eee;
+@navbar-color:                     #fff;
+@navbar-bg:                        #4a566b;
 @navbar-padding:                   floor(@grid-gutter-width / 2);  // ~15px
 
 // Navbar links
-@navbar-link-color:                #777;
-@navbar-link-hover-color:          #333;
+@navbar-link-color:                #eee;
+@navbar-link-hover-color:          #fff;
 @navbar-link-hover-bg:             transparent;
-@navbar-link-active-color:         #555;
+@navbar-link-active-color:         #fff;
 @navbar-link-active-bg:            darken(@navbar-bg, 10%);
 @navbar-link-disabled-color:       #ccc;
 @navbar-link-disabled-bg:          transparent;

@@ -1,2 +1,11 @@
 <template name="body">
+{{> nav}}
+<div class="content-wrapper row">
+  <div class="sidebar col-lg-3">
+    {{> sidebar}}
+  </div>
+  <div class="content template-{{pageName}} col-lg-9">
+    {{{renderPage}}}
+  </div>
+</div>
 </template>
