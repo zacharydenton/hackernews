@@ -1,5 +1,6 @@
 <template name="post_item">
-<a class="post-item" href="{{url}}">
+{{#with item}}
+<a class="post-item" href="{{link}}">
   <div class="controls">
     <i class="icon-chevron-up"></i>
     <span class="points"><span>{{points}}</span></span>
@@ -7,11 +8,13 @@
   </div>
   <div class="meta">
     <span class="title">{{title}}</span><br />
-    <span class="username">by {{postedBy}}</span> <span class="time">({{postedAgo}})</span><br />
-    <span class="comments">{{commentCount}} comments</span>
+    <span class="username">by {{username}}</span>
+    {{#if domain}}<span class="domain">({{domain}})</span>{{/if}}<br />
+    <span class="comments">{{num_comments}} comments</span>
   </div>
   <div class="image">
     <i class="icon-chevron-right"></i>
   </div>
 </a>
+{{/with}}
 </template>

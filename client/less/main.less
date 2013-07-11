@@ -67,7 +67,7 @@ ul.posts-list {
   li {
     border-bottom: 1px solid @gray-lighter;
 
-    a {
+    a.post-item {
       display: block;
       position: relative;
       padding: 10px 15px;
@@ -124,8 +124,14 @@ ul.posts-list {
         font-size: @font-size-large;
       }
 
-      .username, .time, .comments {
+      .username, .domain, .comments {
         font-size: @font-size-small;
+      }
+
+      .comments {
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       i {

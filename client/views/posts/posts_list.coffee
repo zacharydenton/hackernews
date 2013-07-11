@@ -1,20 +1,34 @@
 fetchPosts = (opts) ->
-  $.getJSON "#{opts.url}?format=jsonp&callback=?", (data) ->
+  params =
+    limit: 100
+    filter:
+      fields:
+        type: "submission"
+  if opts.params?
+    params = $.extend params, opts.params
+  $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/_search?callback=?", params, (data) ->
     posts = Session.get('posts') ? {}
-    posts[opts.id] = data.items
+    posts[opts.id] = data.results
     Session.set 'posts', posts
 
 Template.posts_top.topHandle =
   id: 'top'
-  url: 'http://api.ihackernews.com/page'
+  params:
+    sortby: 'points desc'
+    filter:
+      fields:
+        create_ts: '[NOW-24HOURS TO NOW]'
 
 Template.posts_new.newHandle =
   id: 'new'
-  url: 'http://api.ihackernews.com/new'
+  params:
+    sortby: 'create_ts desc'
 
 Template.posts_ask.askHandle =
   id: 'ask'
-  url: 'http://api.ihackernews.com/ask'
+  params:
+    q: '"Ask HN"'
+    sortby: 'create_ts desc'
 
 Template.posts_list.posts = ->
   posts = Session.get('posts')
