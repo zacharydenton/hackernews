@@ -1,9 +1,6 @@
 fetchPosts = (opts) ->
   params =
     limit: 100
-    filter:
-      fields:
-        type: "submission"
   if opts.params?
     params = $.extend params, opts.params
   $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/_search?callback=?", params, (data) ->
@@ -18,17 +15,25 @@ Template.posts_top.topHandle =
     filter:
       fields:
         create_ts: '[NOW-24HOURS TO NOW]'
+        type: "submission"
 
 Template.posts_new.newHandle =
   id: 'new'
   params:
     sortby: 'create_ts desc'
+    filter:
+      fields:
+        type: "submission"
 
 Template.posts_ask.askHandle =
   id: 'ask'
   params:
     q: '"Ask HN"'
-    sortby: 'create_ts desc'
+    sortby: 'num_comments desc'
+    filter:
+      fields:
+        create_ts: '[NOW-24HOURS TO NOW]'
+        type: "submission"
 
 Template.posts_list.posts = ->
   posts = Session.get('posts')
