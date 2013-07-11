@@ -60,3 +60,12 @@ Template.posts_list.posts = ->
     fetchPosts(this)
     return null
 
+Template.posts_list.rendered = ->
+  currentScroll = Session.get 'currentScroll'
+  if currentScroll? and Session.get('posts')?
+    $('.content').scrollTop currentScroll
+    Session.set 'currentScroll', null
+
+Template.posts_list.events =
+  'click .posts-list li': (e) ->
+    Session.set 'currentScroll', $('.content').scrollTop()

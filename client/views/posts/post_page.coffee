@@ -57,7 +57,7 @@ Template.post_page.post = ->
 
 Template.post_page.events =
   'click .toggle': (e) ->
-    if $('.toggle').text() == 'Collapse All' 
+    if $('.toggle').text() == 'Collapse All'
       $('.comments .comments').slideUp()
       $('.toggle').text('Expand All')
     else
