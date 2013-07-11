@@ -8,7 +8,7 @@
 	{{/each}}
 </ul>
 {{else}}
-Loading...
+{{> loading}}
 {{/if}}
 </template>
 
@@ -22,4 +22,8 @@ Loading...
 
 <template name="posts_ask">
 {{> posts_list askHandle}}
+</template>
+
+<template name="posts_search">
+{{> posts_list searchHandle}}
 </template>

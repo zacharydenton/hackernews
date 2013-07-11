@@ -8,3 +8,4 @@ Meteor.Router.add
   '/': 'posts_top'
   '/new': 'posts_new'
   '/ask': 'posts_ask'
+  '/search': 'posts_search'

@@ -1,5 +1,4 @@
 @import "bootstrap/bootstrap.lessimport";
-@import "variables.lessimport";
 
 html, body {
   height: 100%;
@@ -21,6 +20,18 @@ body {
   float: left;
   overflow-y: auto;
   .box-sizing(border-box);
+}
+
+.loading {
+  text-align: center;
+  margin-top: @font-size-large;
+  font-weight: bold;
+
+  i {
+    position: relative;
+    top: 1px;
+    font-size: @font-size-large;
+  }
 }
 
 .sidebar {
