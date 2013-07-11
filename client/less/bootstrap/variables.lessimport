@@ -19,7 +19,7 @@
 // Brand colors
 // -------------------------
 
-@brand-primary:         #428bca;
+@brand-primary:         #4a566b;
 @brand-success:         #5cb85c;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
@@ -172,7 +172,7 @@
 // Basics of a navbar
 @navbar-height:                    50px;
 @navbar-color:                     #fff;
-@navbar-bg:                        #4a566b;
+@navbar-bg:                        @brand-primary;
 @navbar-padding:                   floor(@grid-gutter-width / 2);  // ~15px
 
 // Navbar links

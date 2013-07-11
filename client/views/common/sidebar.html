@@ -1,8 +1,6 @@
 <template name="sidebar">
 <ul>
-  <li><a href="#">Front Page</a></li>
-  <li><a href="#">New Posts</a></li>
-  <li><a href="#">New Comments</a></li>
-  <li><a href="#">Ask HN</a></li>
+  <li><a class="{{active 'posts_top'}}" href="{{posts_topPath}}">Top</a></li>
+  <li><a class="{{active 'posts_new'}}" href="{{posts_newPath}}">New</a></li>
 </ul>
 </template>

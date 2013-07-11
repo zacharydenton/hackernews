@@ -42,8 +42,12 @@ body {
         font-weight: bold;
         text-decoration: none;
 
-        &:active, &:hover {
-          background-color: #768ca4;
+        &:hover {
+          background-color: lighten(@brand-primary, 60%);
+        }
+
+        &.active {
+          background-color: lighten(@brand-primary, 20%);
           color: #fff;
         }
       }
@@ -128,12 +132,11 @@ ul.posts-list {
         color: @gray-lighter;
       }
 
-      &:active, &:hover {
-        color: @gray-lighter;
-        background-color: #768ca4;
+      &:hover {
+        background-color: lighten(@brand-primary, 60%);
 
-        .title {
-          color: #fff;
+        i {
+          color: @gray-light;
         }
       }
     }
