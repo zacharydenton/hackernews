@@ -1,0 +1,23 @@
+<template name="post_page">
+<div class="post">
+  {{#with post}}
+  {{#if url}}
+  <h1 class="title"><a href="{{url}}">{{title}}</a></h1>
+  {{else}}
+  <h1 class="title">{{title}}</h1>
+  {{/if}}
+  <div class="meta">
+    Posted <time datetime="{{create_ts}}">{{ago create_ts}}</time> by <span class="username">{{username}}</span>{{#if domain}} via <span class="domain">{{domain}}</span>{{/if}}
+  </div>
+  {{/with}}
+</div>
+<div class="divider">
+  <span class="comments">{{post.num_comments}} comments</span>
+  <span class="toggle">Collapse All</span>
+</div>
+{{#if haveComments}}
+{{> comments post}}
+{{else}}
+{{> loading}}
+{{/if}}
+</template>

@@ -1,4 +1,7 @@
 Template.post_item.link = ->
+  Meteor.Router.post_pagePath @_id
+
+Template.post_item.external_link = ->
   if @url?
     @url
   else
@@ -8,3 +11,7 @@ Template.post_item.events =
   'click .comments': (e) ->
     e.preventDefault()
     window.location = "http://news.ycombinator.com/item?id=#{@id}"
+  'click .image': (e) ->
+    if @url
+      e.preventDefault()
+      window.location = @url

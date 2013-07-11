@@ -1,0 +1,27 @@
+<template name="comments">
+{{#if comments}}
+<ul class="comments">
+  {{#each comments}}
+  <li>
+  {{#with item}}
+  {{> comment}}
+  {{/with}}
+  {{> comments item}}
+  </li>
+  {{/each}}
+</ul>
+{{/if}}
+</template>
+
+<template name="comment">
+<div class="comment">
+  <div class="border"></div>
+  <div class="meta">
+    <span class="username">{{username}}</span>
+    <time datetime="{{create_ts}}">{{ago create_ts}}</time>
+  </div>
+  <div class="text">
+    {{{text}}}
+  </div>
+</div>
+</template>
