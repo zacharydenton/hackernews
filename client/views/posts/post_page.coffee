@@ -1,6 +1,7 @@
 fetchPost = (id) ->
   $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/#{id}?callback=?", (data) ->
     Session.set 'post', data
+    Session.set 'comments', null
     comments = []
     num_comments = data.num_comments
     fetchComments = (start) ->
