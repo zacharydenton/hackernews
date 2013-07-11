@@ -19,6 +19,7 @@ body {
 
 .sidebar, .content {
   float: left;
+  overflow-y: auto;
   .box-sizing(border-box);
 }
 
@@ -52,4 +53,89 @@ body {
 
 .content {
   width: 75%;
+}
+
+ul.posts-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    border-bottom: 1px solid @gray-lighter;
+
+    a {
+      display: block;
+      position: relative;
+      padding: 10px 15px;
+      color: @gray;
+      text-decoration: none;
+      .clearfix;
+
+      .controls {
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        vertical-align: middle;
+
+        .points {
+          position: absolute;
+          top: 50%;
+          text-align: center;
+
+          span {
+            position: absolute;
+            top: -9px;
+            width: 40px;
+            left: -13px;
+          }
+        }
+
+        .icon-chevron-down {
+          position: absolute;
+          bottom: 2px;
+        }
+      }
+
+      .meta {
+        margin-left: 40px;
+        float: left;
+      }
+
+      .image {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+
+        i {
+          position: relative;
+          font-size: @font-size-large;
+          line-height: @font-size-large;
+          top: -@font-size-large / 2;
+        }
+      }
+
+      .title {
+        color: @gray-dark;
+        font-weight: bold;
+        font-size: @font-size-large;
+      }
+
+      .username, .domain, .comments {
+        font-size: @font-size-small;
+      }
+
+      i {
+        color: @gray-lighter;
+      }
+
+      &:active, &:hover {
+        color: @gray-lighter;
+        background-color: #768ca4;
+
+        .title {
+          color: #fff;
+        }
+      }
+    }
+  }
 }
