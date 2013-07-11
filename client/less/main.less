@@ -1,3 +1,4 @@
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic');
 @import "bootstrap/bootstrap.lessimport";
 
 html, body {
@@ -10,6 +11,14 @@ body {
 
 .navbar {
   .box-shadow(inset 0px -4px 4px -4px #000000);
+
+  .navbar-brand {
+    font-weight: bold;
+  }
+
+  .nav {
+    font-size: @font-size-large;
+  }
 }
 
 .outer-wrapper, .sidebar, .content {
