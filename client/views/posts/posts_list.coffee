@@ -1,9 +1,7 @@
 fetchPosts = ->
-  params = 
-    'limit': 30
-    'sortby': 'product(points,pow(2,div(div(ms(create_ts,NOW),3600000),72))) desc'
-  $.getJSON 'http://api.thriftdb.com/api.hnsearch.com/items/_search?callback=?', params, (data) ->
-    Session.set 'posts', data.results
+  $.getJSON 'http://api.ihackernews.com/page?format=jsonp&callback=?', (data) ->
+    console.log data
+    Session.set 'posts', data.items
 
 Template.posts_list.posts = ->
   posts = Session.get 'posts'

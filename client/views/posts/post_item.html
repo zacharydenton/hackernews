@@ -1,14 +1,14 @@
 <template name="post_item">
-<a class="post-item" href="{{item.url}}">
+<a class="post-item" href="{{url}}">
   <div class="controls">
     <i class="icon-chevron-up"></i>
-    <span class="points"><span>{{item.points}}</span></span>
+    <span class="points"><span>{{points}}</span></span>
     <i class="icon-chevron-down"></i>
   </div>
   <div class="meta">
-    <span class="title">{{item.title}}</span><br />
-    <span class="username">by {{item.username}}</span> <span class="domain">({{item.domain}})</span><br />
-    <span class="comments">{{item.num_comments}} comments</span>
+    <span class="title">{{title}}</span><br />
+    <span class="username">by {{postedBy}}</span> <span class="time">({{postedAgo}})</span><br />
+    <span class="comments">{{commentCount}} comments</span>
   </div>
   <div class="image">
     <i class="icon-chevron-right"></i>
