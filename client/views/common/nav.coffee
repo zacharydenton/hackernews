@@ -11,7 +11,10 @@ Template.nav.events
   'click .refresh': (e) ->
     e.preventDefault()
     e.stopPropagation()
-    refreshPosts Meteor.Router.page()
+    if Meteor.Router.page() == 'post_page'
+      fetchAllComments()
+    else
+      refreshPosts Meteor.Router.page()
   'click .search': (e) ->
     e.preventDefault()
     e.stopPropagation()
