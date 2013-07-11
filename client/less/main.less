@@ -243,12 +243,18 @@ ul.comments {
 
         .border {
           position: absolute;
-          background-color: @brand-primary;
+          background-color: @link-color;
           width: 10px;
           margin-right: 10px;
           top: 0;
           bottom: 0;
           left: 0;
+        }
+
+        &:hover {
+          .border {
+            background-color: @link-hover-color;
+          }
         }
       }
     }

@@ -1,11 +1,19 @@
+fetchFrontPage = ->
+  $.getJSON "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20feed%20where%20url%3D'http%3A%2F%2Fhnsearch.com%2Fbigrss'&format=json&callback=?", (data) ->
+    posts = Session.get('posts') ? {}
+    posts[Meteor.Router.page()] = data.query.results.item
+    Session.set 'posts', posts
+
 fetchPosts = (opts) ->
+  if Meteor.Router.page() == 'posts_front'
+    return fetchFrontPage()
   params =
     limit: 100
   if opts.params?
     params = $.extend params, opts.params
   $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/_search?callback=?", params, (data) ->
     posts = Session.get('posts') ? {}
-    posts[Meteor.Router.page()] = data.results
+    posts[Meteor.Router.page()] = (result.item for result in data.results)
     Session.set 'posts', posts
 
 Template.posts_top.topHandle =

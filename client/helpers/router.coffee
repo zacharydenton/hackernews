@@ -2,7 +2,8 @@ Meteor.Router.beforeRouting = ->
   document.title = 'HackerReader'
 
 Meteor.Router.add
-  '/': 'posts_top'
+  '/': 'posts_front'
+  '/top': 'posts_top'
   '/new': 'posts_new'
   '/ask': 'posts_ask'
   '/search': 'posts_search'
