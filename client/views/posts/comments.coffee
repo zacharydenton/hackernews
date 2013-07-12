@@ -11,3 +11,9 @@ Template.comments.events =
     containingComment = $(e.target).closest('li')
     $(containingComment).children('.comments').slideToggle()
     false
+
+Template.comment.points = ->
+  if moment(@create_ts) < moment().subtract('days', 5)
+    @points
+  else
+    null

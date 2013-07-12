@@ -7,11 +7,12 @@
   fetchCommentsBatch = (start) ->
     params =
       limit: 100
-      sortby: 'create_ts asc'
       start: start
+      sortby: 'product(num_comments,product(points,pow(2,div(div(ms(create_ts,NOW),3600000),72)))) desc'
       filter:
         fields:
           'discussion.sigid': post._id
+
     $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/_search?callback=?", params, (data) ->
       comments = comments.concat data.results
       start += 100
@@ -30,10 +31,11 @@ fetchComments = ->
   return unless post?
   params =
     limit: 100
-    sortby: 'create_ts asc'
+    sortby: 'product(num_comments,product(points,pow(2,div(div(ms(create_ts,NOW),3600000),72)))) desc'
     filter:
       fields:
         'discussion.sigid': post._id
+
   $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/_search?callback=?", params, (data) ->
     dictionary = {}
     for comment in data.results

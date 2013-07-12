@@ -18,6 +18,9 @@
   <div class="border"></div>
   <div class="meta">
     <span class="username">{{username}}</span>
+    {{#if points}}
+    <span class="points">{{points}}</span> {{pluralize points 'point' 'points'}}
+    {{/if}}
     <time datetime="{{create_ts}}">{{ago create_ts}}</time>
   </div>
   <div class="text">
