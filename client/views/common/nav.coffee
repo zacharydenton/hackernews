@@ -4,8 +4,14 @@ refreshPosts = (key) ->
     posts[key] = null
     Session.set 'posts', posts
 
+Template.nav.post = ->
+  Session.get 'post'
+
 Template.nav.searching = ->
   Session.get 'searching'
+
+Template.nav.reading = ->
+  Meteor.Router.page() == 'post_read'
 
 Template.nav.events
   'click .refresh': (e) ->

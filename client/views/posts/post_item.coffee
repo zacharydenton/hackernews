@@ -4,13 +4,15 @@ Template.post_item.link = ->
 Template.post_item.external_link = ->
   if @url?
     @url
+  else if @comments?
+    @comments
   else
     "http://news.ycombinator.com/item?id=#{@id}"
 
 Template.post_item.events =
   'click .comments': (e) ->
     e.preventDefault()
-    window.location = "http://news.ycombinator.com/item?id=#{@id}"
+    window.location = @comments ? "http://news.ycombinator.com/item?id=#{@id}"
   'click .image': (e) ->
     if @url
       e.preventDefault()
