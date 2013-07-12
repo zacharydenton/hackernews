@@ -1,4 +1,5 @@
 @import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic');
+@import "variables.less";
 @import "bootstrap/bootstrap.lessimport";
 
 html, body {
@@ -26,7 +27,6 @@ body {
 }
 
 .sidebar, .content {
-  float: left;
   overflow-y: auto;
   .box-sizing(border-box);
 }
@@ -44,16 +44,56 @@ body {
 }
 
 .sidebar {
-  width: 25%;
+  float: left;
+  width: @sidebarWidth;
   border-right: 4px solid @gray-lighter;
+
+  .meta {
+    padding: 10px 15px;
+    color: @gray-light;
+    border-bottom: 4px solid @gray-lighter;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: @font-size-large;
+
+    a {
+      color: @gray-light;
+    }
+
+    .row {
+      margin: 0;
+
+      * {
+        height: @line-height-base * @font-size-large;
+        line-height: @line-height-base * @font-size-large;
+      }
+    }
+
+    hr {
+      margin: 10px 0;
+    }
+
+    .icon-chevron-up {
+      float: left;
+    }
+
+    .icon-chevron-down {
+      float: right;
+    }
+  }
 
   ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    border-bottom: 4px solid @gray-lighter;
 
     li {
       border-bottom: 1px solid @gray-lighter;
+
+      &:last-child {
+        border: none;
+      }
 
       a {
         display: block;
@@ -76,7 +116,7 @@ body {
 }
 
 .content {
-  width: 75%;
+  margin-left: @sidebarWidth;
 }
 
 ul.posts-list {
@@ -186,6 +226,11 @@ ul.posts-list {
   }
 }
 
+.read {
+  padding: 10px 15px;
+  padding-top: 0;
+}
+
 .divider {
   padding: 5px 15px;
   text-transform: uppercase;
@@ -261,6 +306,16 @@ ul.comments {
   }
 }
 
+@media(max-width: @screen-small) {
+  .sidebar {
+    width: 25%;
+  }
+
+  .content {
+    margin-left: 25%;
+  }
+}
+
 @media(max-width: @screen-phone) {
   .sidebar {
     display: none;
@@ -268,6 +323,7 @@ ul.comments {
 
   .content {
     width: 100%;
+    margin: 0;
     height: auto;
   }
 }

@@ -69,6 +69,8 @@ Template.posts_list.posts = ->
     return null
 
 Template.posts_list.rendered = ->
+  Session.set 'post', null
+  Session.set 'post_article', null
   currentScroll = Session.get 'currentScroll'
   if currentScroll? and Session.get('posts')?
     $('.content').scrollTop currentScroll

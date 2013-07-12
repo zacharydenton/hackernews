@@ -1,4 +1,23 @@
 <template name="sidebar">
+{{#if post}}
+<div class="meta">
+  <div class="row">
+    <i class="icon-chevron-down"></i>
+    <span class="points">{{post.points}}</span>
+    <i class="icon-chevron-up"></i>
+  </div>
+  {{#if post.url}}
+  <hr />
+  <div class="row">
+    {{#if reading}}
+    <a href="{{post_pagePath post._id}}">Comments</a>
+    {{else}}
+    <a href="{{post_readPath post._id}}">Preview</a>
+    {{/if}}
+  </div>
+  {{/if}}
+</div>
+{{/if}}
 <ul>
   <li><a class="{{active 'posts_front'}}" href="{{posts_frontPath}}">Front Page</a></li>
   <li><a class="{{active 'posts_top'}}" href="{{posts_topPath}}">Top Posts</a></li>

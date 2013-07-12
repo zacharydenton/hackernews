@@ -1,4 +1,4 @@
-<template name="post_page">
+<template name="post_read">
 <div class="post">
   {{#with post}}
   {{#if url}}
@@ -11,17 +11,10 @@
   </div>
   {{/with}}
 </div>
-{{#if post.text}}
+{{#if text}}
 <div class="read">
-  {{{post.text}}}
+{{{text}}}
 </div>
-{{/if}}
-<div class="divider">
-  <span class="comments">{{post.num_comments}} comments</span>
-  <span class="toggle">Collapse All</span>
-</div>
-{{#if haveComments}}
-{{> comments post}}
 {{else}}
 {{> loading}}
 {{/if}}

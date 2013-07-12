@@ -13,6 +13,8 @@ Template.nav.events
     e.stopPropagation()
     if Meteor.Router.page() == 'post_page'
       fetchAllComments()
+    else if Meteor.Router.page() == 'post_read'
+      fetchArticle()
     else
       refreshPosts Meteor.Router.page()
   'click .search': (e) ->

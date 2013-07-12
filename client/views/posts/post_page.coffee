@@ -41,11 +41,14 @@ fetchComments = ->
       dictionary[comment.item.parent_sigid].push comment
     Session.set 'comments', dictionary
 
-fetchPost = (id) ->
+@fetchPost = (id) ->
   $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/#{id}?callback=?", (data) ->
     Session.set 'post', data
-    Session.set 'comments', null
-    fetchComments()
+
+    comments = Session.get 'comments'
+    if not comments? or data._id not of comments
+      Session.set 'comments', null
+      fetchComments()
 
 Template.post_page.haveComments = ->
   Session.get('comments')?
