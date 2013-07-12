@@ -1,56 +1,9 @@
-@fetchAllComments = ->
-  post = Session.get 'post'
-  return unless post?
-  Session.set 'comments', null
-  comments = []
-  num_comments = post.num_comments
-  fetchCommentsBatch = (start) ->
-    params =
-      limit: 100
-      start: start
-      sortby: 'product(num_comments,product(points,pow(2,div(div(ms(create_ts,NOW),3600000),72)))) desc'
-      filter:
-        fields:
-          'discussion.sigid': post._id
-
-    $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/_search?callback=?", params, (data) ->
-      comments = comments.concat data.results
-      start += 100
-      if start < num_comments
-        fetchCommentsBatch start
-      else
-        dictionary = {}
-        for comment in comments
-          dictionary[comment.item.parent_sigid] ?= []
-          dictionary[comment.item.parent_sigid].push comment
-        Session.set 'comments', dictionary
-  fetchCommentsBatch 0
-
-fetchComments = ->
-  post = Session.get 'post'
-  return unless post?
-  params =
-    limit: 100
-    sortby: 'product(num_comments,product(points,pow(2,div(div(ms(create_ts,NOW),3600000),72)))) desc'
-    filter:
-      fields:
-        'discussion.sigid': post._id
-
-  $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/_search?callback=?", params, (data) ->
-    dictionary = {}
-    for comment in data.results
-      dictionary[comment.item.parent_sigid] ?= []
-      dictionary[comment.item.parent_sigid].push comment
-    Session.set 'comments', dictionary
-
 @fetchPost = (id) ->
+  return if Session.get 'receivingData'
+  Session.set 'receivingData', true
   $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/#{id}?callback=?", (data) ->
     Session.set 'post', data
-
-    comments = Session.get 'comments'
-    if not comments? or data._id not of comments
-      Session.set 'comments', null
-      fetchComments()
+    Session.set 'comments', null
 
 Template.post_page.haveComments = ->
   Session.get('comments')?

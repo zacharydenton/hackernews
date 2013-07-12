@@ -1,5 +1,5 @@
 fetchFrontPage = ->
-  $.getJSON "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20feed%20where%20url%3D'http%3A%2F%2Fhnsearch.com%2Fbigrss'&format=json&callback=?", (data) ->
+  $.getJSON "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20feed%20where%20url%3D'http%3A%2F%2Fhnsearch.com%2Fbigrss'%20limit%20100&format=json&callback=?", (data) ->
     posts = Session.get('posts') ? {}
     posts[Meteor.Router.page()] = data.query.results.item
     Session.set 'posts', posts

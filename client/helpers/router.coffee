@@ -1,5 +1,6 @@
 Meteor.Router.beforeRouting = ->
   document.title = 'HackerReader'
+  Session.set 'receivingData', false
 
 Meteor.Router.add
   '/': 'posts_front'

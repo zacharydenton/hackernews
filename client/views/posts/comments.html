@@ -1,16 +1,5 @@
 <template name="comments">
-{{#if comments}}
-<ul class="comments">
-  {{#each comments}}
-  <li>
-  {{#with item}}
-  {{> comment}}
-  {{/with}}
-  {{> comments item}}
-  </li>
-  {{/each}}
-</ul>
-{{/if}}
+{{{comments}}}
 </template>
 
 <template name="comment">
