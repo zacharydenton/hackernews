@@ -10,6 +10,10 @@ renderComments = (comments) ->
     return "" unless comments_dict[parent_sigid]?
     result = ""
     for comment in comments_dict[parent_sigid]
+      if depth > 1
+        comment.item.depth = ((depth - 2) % 4) + 2
+      else
+        comment.item.depth = 1
       html = Template.comment(comment.item)
       children = renderLevel(comment.item._id, depth + 1)
       result += "<li>#{html + children}</li>"

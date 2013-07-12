@@ -301,12 +301,12 @@ ul.comments {
           top: 0;
           bottom: 0;
           left: 0;
-        }
 
-        &:hover {
-          .border {
-            background-color: @link-hover-color;
-          }
+          &.depth-1 { background-color: @comment1; }
+          &.depth-2 { background-color: @comment2; }
+          &.depth-3 { background-color: @comment3; }
+          &.depth-4 { background-color: @comment4; }
+          &.depth-5 { background-color: @comment5; }
         }
       }
     }
