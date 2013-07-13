@@ -31,7 +31,7 @@ renderComments = (comments) ->
     params =
       limit: 100
       start: start
-      sortby: 'product(num_comments,product(points,pow(2,div(div(ms(create_ts,NOW),3600000),72)))) desc'
+      sortby: 'points desc, num_comments desc'
       filter:
         fields:
           'discussion.sigid': post._id
@@ -50,7 +50,7 @@ fetchComments = ->
   return unless post?
   params =
     limit: 100
-    sortby: 'product(num_comments,product(points,pow(2,div(div(ms(create_ts,NOW),3600000),72)))) desc'
+    sortby: 'points desc, num_comments desc'
     filter:
       fields:
         'discussion.sigid': post._id

@@ -2,7 +2,7 @@
   post = Session.get 'post'
   return unless post?
   Session.set 'post_article', null
-  $.getJSON "http://viewtext.org/api/text?url=#{post.url}&callback=?", (data) ->
+  $.getJSON "http://viewtext.org/api/text?callback=?", url: post.url, (data) ->
     Session.set 'post_article', data.content
 
 Template.post_read.post = ->
