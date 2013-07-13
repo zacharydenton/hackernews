@@ -3,7 +3,7 @@
 </template>
 
 <template name="comment">
-<div class="comment">
+<div class="comment{{#if haveReplies}} with-replies{{/if}}">
   <div class="border depth-{{depth}}"></div>
   <div class="meta">
     <span class="username">{{username}}</span>

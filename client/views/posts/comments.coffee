@@ -9,14 +9,15 @@ renderComments = (comments) ->
   renderLevel = (parent_sigid, depth) ->
     return "" unless comments_dict[parent_sigid]?
     result = ""
-    for comment in comments_dict[parent_sigid]
+    _.each comments_dict[parent_sigid], (comment) ->
       if depth > 1
         comment.item.depth = ((depth - 2) % 4) + 2
       else
         comment.item.depth = 1
       html = Template.comment(comment.item)
       children = renderLevel(comment.item._id, depth + 1)
-      result += "<li>#{html + children}</li>"
+      replies_hidden = if comment.item.num_comments > 0 then "<div class='replies-hidden'>#{comment.item.num_comments} hidden #{if comment.item.num_comments == 1 then 'comment' else 'comments'}.</div>" else ""
+      result += "<li>#{html + children + replies_hidden}</li>"
     "<ul class='comments'>#{result}</ul>"
 
   renderLevel(post._id, 0)
@@ -71,7 +72,14 @@ Template.comments.events =
     false
   'click li': (e) ->
     containingComment = $(e.target).closest('li')
-    $(containingComment).children('.comments').slideToggle()
+    $comments = $(containingComment).children('.comments')
+    $replies_hidden = $(containingComment).children('.replies-hidden')
+    if $comments.css('display') is 'none'
+      $comments.show()
+      $replies_hidden.hide()
+    else
+      $comments.hide()
+      $replies_hidden.show()
     false
 
 Template.comment.points = ->
@@ -79,3 +87,6 @@ Template.comment.points = ->
     @points
   else
     null
+
+Template.comment.haveReplies = ->
+  @num_comments > 0

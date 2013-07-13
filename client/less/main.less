@@ -262,9 +262,12 @@ ul.comments {
   li {
     .comment {
       padding: 10px;
-      cursor: pointer;
       border-bottom: 1px solid @gray-lighter;
       box-sizing: border-box;
+
+      &.with-replies {
+        cursor: pointer;
+      }
 
       .meta {
         color: @gray-light;
@@ -282,6 +285,14 @@ ul.comments {
           margin-bottom: 0;
         }
       }
+    }
+
+    .replies-hidden {
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+      background-color: @gray-lighter;
+      .box-shadow(inset 0px 4px 6px -5px);
     }
 
     ul.comments {
