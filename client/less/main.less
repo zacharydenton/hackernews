@@ -12,6 +12,10 @@ body {
 .navbar {
   .navbar-brand {
     font-weight: bold;
+
+    .logo {
+      display: none;
+    }
   }
 
   .nav {
@@ -333,6 +337,20 @@ ul.comments {
 }
 
 @media(max-width: @screen-phone) {
+  .navbar {
+    .navbar-brand {
+      padding: 10px;
+
+      .name {
+        display: none;
+      }
+
+      .logo {
+        display: inline-block;
+      }
+    }
+  }
+
   .sidebar {
     display: none;
   }
@@ -343,9 +361,9 @@ ul.comments {
     height: auto;
   }
 
-	.read {
-		img {
-			box-shadow: none;
-		}
-	}
+  .read {
+    img {
+      box-shadow: none;
+    }
+  }
 }

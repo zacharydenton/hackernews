@@ -1,4 +1,5 @@
 Template.post_item.link = ->
+  return "" unless Meteor.Router?
   Meteor.Router.post_pagePath (@_id ? @hnsearch_id)
 
 Template.post_item.external_link = ->

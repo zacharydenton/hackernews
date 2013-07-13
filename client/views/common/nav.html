@@ -1,6 +1,9 @@
 <template name="nav">
 <div class="navbar navbar-fixed-top">
-  <a class="navbar-brand" href="/">HackerReader</a>
+  <a class="navbar-brand" href="/">
+    <img class="logo" src="/logo.png"></img>
+    <span class="name">HackerReader</span>
+  </a>
   {{#if searching}}
   <form class="navbar-form pull-right search-form" action="">
     <input type="text" placeholder="Search" autofocus>
