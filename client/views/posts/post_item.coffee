@@ -1,6 +1,7 @@
 Template.post_item.link = ->
-  return "" unless Meteor.Router?
-  Meteor.Router.post_pagePath (@_id ? @hnsearch_id)
+  id = @_id ? @hnsearch_id
+  return "" unless id?
+  Meteor.Router.post_pagePath id
 
 Template.post_item.external_link = ->
   if @url?
@@ -11,10 +12,8 @@ Template.post_item.external_link = ->
     "http://news.ycombinator.com/item?id=#{@id}"
 
 Template.post_item.events =
-  'click .comments': (e) ->
-    e.preventDefault()
-    window.location = @comments ? "http://news.ycombinator.com/item?id=#{@id}"
   'click .image': (e) ->
-    if @url
+    id = @id ? @hnsearch_id
+    if id?
       e.preventDefault()
-      window.location = @url
+      Meteor.Router.to Meteor.Router.post_readPath(id)
