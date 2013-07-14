@@ -1,9 +1,3 @@
-@import "bootstrap/bootstrap.lessimport";
-@import "variables.lessimport";
-@import "responsive.lessimport";
-@import "spinner.lessimport";
-@import "font.lessimport";
-
 html, body {
   height: 100%;
 }
@@ -17,6 +11,13 @@ body {
     padding: 10px;
     padding-left: 0;
     margin-left: 0;
+    height: 52px;
+
+    &:active, &:hover {
+      #path3007, #path3011, #path3013 {
+        fill: @brand-info !important;
+      }
+    }
   }
 
   .nav {
@@ -36,12 +37,12 @@ body {
         i {
           position: relative;
 
-          &.icon-search {
-            top: 1px;
+          &.icon-newspaper {
+            top: -1px;
           }
 
           &.icon-arrows-cw {
-            top: -1px;
+            top: -2px;
             font-size: 26px;
             line-height: 26px;
           }

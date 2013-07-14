@@ -13,3 +13,5 @@ Handlebars.registerHelper 'active', (path) ->
 Handlebars.registerHelper 'ago', (datetime) ->
   moment(datetime).fromNow()
 
+Handlebars.registerHelper 'svgSupported', ->
+  Modernizr.svg
