@@ -1,9 +1,17 @@
 <template name="post_item">
 <a class="post-item" href="{{link}}">
   <div class="controls">
-    <i class="icon-chevron-up"></i>
-    <span class="points"><span>{{points}}</span></span>
-    <i class="icon-chevron-down"></i>
+    <div class="valign">
+      <div class="top">
+        <i class="icon-up-open"></i>
+      </div>
+      <div class="middle">
+        <span class="points">{{points}}</span>
+      </div>
+      <div class="bottom">
+        <i class="icon-down-open"></i>
+      </div>
+    </div>
   </div>
   <div class="meta">
     <span class="title">{{title}}</span><br />
@@ -13,7 +21,7 @@
   </div>
   <div class="image">
     <div class="valign">
-      <i class="icon-chevron-right"></i>
+      <i class="icon-right-open-big"></i>
     </div>
   </div>
 </a>

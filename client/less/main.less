@@ -1,13 +1,15 @@
-@import "variables.less";
 @import "bootstrap/bootstrap.lessimport";
+@import "variables.lessimport";
+@import "responsive.lessimport";
+@import "spinner.lessimport";
+@import "font.lessimport";
 
 html, body {
   height: 100%;
 }
 
 body {
-  background-color: #f0f0f0;
-  padding-top: @navbar-height;
+  padding-top: 52px;
 }
 
 .navbar {
@@ -27,9 +29,22 @@ body {
         font-size: 28px;
         height: 52px;
 
+        &:active, &:hover {
+          color: @brand-info;
+        }
+
         i {
           position: relative;
-          top: -1px;
+
+          &.icon-search {
+            top: 1px;
+          }
+
+          &.icon-arrows-cw {
+            top: -1px;
+            font-size: 26px;
+            line-height: 26px;
+          }
         }
       }
     }
@@ -64,7 +79,6 @@ body {
   background-color: #eee;
 
   .meta {
-    padding: 10px 15px;
     color: @gray-light;
     border-bottom: 4px solid @gray-lighter;
     text-align: center;
@@ -76,23 +90,38 @@ body {
     }
 
     .row {
-      margin: 0;
+      margin: 0 15px;
+      padding: 10px 0px;
+      border-bottom: 1px solid @gray-lighter;
+
+      &:last-child {
+        border-bottom: 0;
+      }
 
       * {
-        height: @line-height-base * @font-size-large;
-        line-height: @line-height-base * @font-size-large;
+        height: 24px;
+        line-height: 24px;
+      }
+
+      a {
+        display: block;
+        margin: -10px 0;
+        padding: 10px 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      i {
+        position: relative;
+        top: 2px;
       }
     }
 
-    hr {
-      margin: 10px 0;
-    }
-
-    .icon-chevron-up {
+    .icon-up-open {
       float: left;
     }
 
-    .icon-chevron-down {
+    .icon-down-open {
       float: right;
     }
   }
@@ -118,7 +147,7 @@ body {
         text-decoration: none;
 
         &:hover {
-          background-color: lighten(@brand-primary, 60%);
+          background-color: @brand-info;
         }
 
         &.active {
@@ -156,26 +185,25 @@ ul.posts-list {
 
       .controls {
         position: absolute;
-        top: 10px;
-        bottom: 10px;
-        vertical-align: middle;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 55px;
 
-        .points {
-          position: absolute;
-          top: 50%;
+        .valign {
+          display: table;
+          width: 100%;
+          height: 100%;
           text-align: center;
 
-          span {
-            position: absolute;
-            top: -9px;
-            width: 40px;
-            left: -13px;
-          }
-        }
+          div {
+            display: table-row;
 
-        .icon-chevron-down {
-          position: absolute;
-          bottom: 2px;
+            * {
+              display: table-cell;
+              vertical-align: middle;
+            }
+          }
         }
       }
 
@@ -201,8 +229,8 @@ ul.posts-list {
           i {
             display: table-cell;
             vertical-align: middle;
-            font-size: @font-size-large;
-            line-height: @font-size-large;
+            font-size: 32px;
+            line-height: 32px;
           }
         }
       }
@@ -222,7 +250,7 @@ ul.posts-list {
       }
 
       &:link {
-        background-color: #f0f0f0;
+        background-color: @body-bg;
       }
 
       &:visited {
@@ -233,16 +261,16 @@ ul.posts-list {
         }
 
         i {
-          color: @gray-light;
+          color: darken(#cfcfcf, 8%);
         }
 
         &:hover {
-          background-color: #dbdbdb;
+          background-color: #d0d2d5;
         }
       }
 
       &:hover {
-        background-color: lighten(@brand-primary, 60%);
+        background-color: @brand-info;
 
         i {
           color: @gray-light;
@@ -308,7 +336,7 @@ ul.comments {
         cursor: pointer;
 
         &:hover {
-          background-color: lighten(@brand-primary, 60%);
+          background-color: @brand-info;
         }
       }
 
@@ -363,34 +391,6 @@ ul.comments {
           &.depth-5 { background-color: @comment5; }
         }
       }
-    }
-  }
-}
-
-@media(max-width: @screen-small) {
-  .sidebar {
-    width: 25%;
-  }
-
-  .content {
-    margin-left: 25%;
-  }
-}
-
-@media(max-width: @screen-phone) {
-  .sidebar {
-    display: none;
-  }
-
-  .content {
-    width: 100%;
-    margin: 0;
-    height: auto;
-  }
-
-  .read {
-    img {
-      box-shadow: none;
     }
   }
 }

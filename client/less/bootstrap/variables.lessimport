@@ -23,12 +23,12 @@
 @brand-success:         #5cb85c;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
-@brand-info:            #5bc0de;
+@brand-info:            #f1f3f6;
 
 // Scaffolding
 // -------------------------
 
-@body-bg:               #fff;
+@body-bg:               #f0f0f0;
 @text-color:            @gray-dark;
 
 // Links
@@ -71,9 +71,9 @@
 @padding-small-vertical:         5px;
 @padding-small-horizontal:       10px;
 
-@border-radius-base:             4px;
-@border-radius-large:            6px;
-@border-radius-small:            3px;
+@border-radius-base:             0px;
+@border-radius-large:            3px;
+@border-radius-small:            2px;
 
 @component-active-bg:            @brand-primary;
 

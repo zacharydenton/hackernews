@@ -10,12 +10,12 @@
   {{else}}
   <ul class="nav navbar-nav pull-right">
     <li><a class="search" href="#"><i class="icon-search"></i></a></li>
-    <li><a class="refresh" href="#"><i class="icon-refresh"></i></a></li>
-    {{#if post}}
+    <li><a class="refresh" href="#"><i class="icon-arrows-cw"></i></a></li>
+    {{#if article}}
     {{#if reading}}
-    <li><a href="{{post_pagePath post._id}}"><i class="icon-comments"></i></a></li>
+    <li><a href="{{post_pagePath post._id}}"><i class="icon-comment-alt"></i></a></li>
     {{else}}
-    <li><a href="{{post_readPath post._id}}"><i class="icon-file-text-alt"></i></a></li>
+    <li><a href="{{post_readPath post._id}}"><i class="icon-newspaper"></i></a></li>
     {{/if}}
     {{/if}}
   </ul>

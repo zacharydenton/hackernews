@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'hackerreader-icons';
+  src: url('/font/hackerreader-icons.eot?51305327');
+  src: url('/font/hackerreader-icons.eot?51305327#iefix') format('embedded-opentype'),
+  url('/font/hackerreader-icons.woff?51305327') format('woff'),
+  url('/font/hackerreader-icons.ttf?51305327') format('truetype'),
+  url('/font/hackerreader-icons.svg?51305327#hackerreader-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"] {
+  &:before {
+    font-family: "hackerreader-icons";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    /* opacity: .8; */
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: .2em;
+
+    /* you can be more comfortable with increased icons size */
+    /* font-size: 120%; */
+
+    /* Uncomment for 3D effect */
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+  }
+}
+
+.icon-search:before { content: '\e80b'; } /* '' */
+.icon-arrows-cw:before { content: '\e810'; } /* '' */
+.icon-eye-alt:before { content: '\e811'; } /* '' */
+.icon-comment-alt:before { content: '\e80c'; } /* '' */
+.icon-down-open:before { content: '\e80d'; } /* '' */
+.icon-up-open:before { content: '\e80f'; } /* '' */
+.icon-right-open:before { content: '\e80e'; } /* '' */
+.icon-eye:before { content: '\e80a'; } /* '' */
+.icon-down-open-big:before { content: '\e805'; } /* '' */
+.icon-right-open-big:before { content: '\e807'; } /* '' */
+.icon-up-open-big:before { content: '\e808'; } /* '' */
+.icon-newspaper:before { content: '\e806'; } /* '' */
+.icon-arrows-ccw:before { content: '\e809'; } /* '' */

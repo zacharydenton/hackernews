@@ -2,12 +2,11 @@
 {{#if post}}
 <div class="meta">
   <div class="row">
-    <i class="icon-chevron-down"></i>
+    <i class="icon-down-open"></i>
     <span class="points">{{post.points}}</span>
-    <i class="icon-chevron-up"></i>
+    <i class="icon-up-open"></i>
   </div>
   {{#if post.url}}
-  <hr />
   <div class="row">
     {{#if reading}}
     <a href="{{post_pagePath post._id}}">Comments</a>

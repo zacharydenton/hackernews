@@ -7,6 +7,10 @@ refreshPosts = (key) ->
 Template.nav.post = ->
   Session.get 'post'
 
+Template.nav.article = ->
+  post = Session.get 'post'
+  post? && post.url?
+
 Template.nav.searching = ->
   Session.get 'searching'
 

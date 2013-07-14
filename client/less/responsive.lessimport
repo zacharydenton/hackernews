@@ -1,0 +1,27 @@
+@media(max-width: @screen-small) {
+  .sidebar {
+    width: 25%;
+  }
+
+  .content {
+    margin-left: 25%;
+  }
+}
+
+@media(max-width: @screen-phone) {
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    width: 100%;
+    margin: 0;
+    height: auto;
+  }
+
+  .read {
+    img {
+      box-shadow: none;
+    }
+  }
+}
