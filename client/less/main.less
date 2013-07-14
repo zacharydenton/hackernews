@@ -6,21 +6,33 @@ html, body {
 }
 
 body {
+  background-color: #f0f0f0;
   padding-top: @navbar-height;
 }
 
 .navbar {
   .navbar-brand {
-    font-weight: bold;
-
-    .logo {
-      display: none;
-    }
+    padding: 10px;
+    padding-left: 0;
+    margin-left: 0;
   }
 
   .nav {
-    margin-top: 1px;
-    font-size: @font-size-large;
+    margin-right: -10px;
+
+    li {
+      a {
+        padding: 10px;
+        line-height: 32px;
+        font-size: 28px;
+        height: 52px;
+
+        i {
+          position: relative;
+          top: -1px;
+        }
+      }
+    }
   }
 }
 
@@ -124,7 +136,6 @@ body {
 
 .content {
   margin-left: @sidebarWidth;
-  background-color: #f0f0f0;
 }
 
 ul.posts-list {
@@ -367,20 +378,6 @@ ul.comments {
 }
 
 @media(max-width: @screen-phone) {
-  .navbar {
-    .navbar-brand {
-      padding: 10px;
-
-      .name {
-        display: none;
-      }
-
-      .logo {
-        display: inline-block;
-      }
-    }
-  }
-
   .sidebar {
     display: none;
   }
