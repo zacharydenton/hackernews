@@ -1,7 +1,10 @@
+renderPosts = (posts) ->
+  ("<li>#{Template.post_item(post)}</li>" for post in posts).join ""
+
 fetchFrontPage = ->
   $.getJSON "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20feed%20where%20url%3D'http%3A%2F%2Fhnsearch.com%2Fbigrss'%20limit%20100&format=json&callback=?", (data) ->
     posts = Session.get('posts') ? {}
-    posts[Meteor.Router.page()] = (result for result in data.query.results.item when result.hnsearch_id?)
+    posts[Meteor.Router.page()] = renderPosts (result for result in data.query.results.item when result.hnsearch_id?)
     Session.set 'posts', posts
 
 fetchPosts = (opts) ->
@@ -13,7 +16,7 @@ fetchPosts = (opts) ->
     params = $.extend params, opts.params
   $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/_search?callback=?", params, (data) ->
     posts = Session.get('posts') ? {}
-    posts[Meteor.Router.page()] = (result.item for result in data.results when result.item._id?)
+    posts[Meteor.Router.page()] = renderPosts (result.item for result in data.results when result.item._id?)
     Session.set 'posts', posts
 
 Template.posts_top.topHandle =

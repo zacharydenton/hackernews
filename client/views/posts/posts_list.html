@@ -1,11 +1,7 @@
 <template name="posts_list">
 {{#if posts}}
 <ul class="posts-list">
-	{{#each posts}}
-	<li>
-	{{> post_item}}
-	</li>
-	{{/each}}
+  {{{posts}}}
 </ul>
 {{else}}
 {{> loading}}
