@@ -1,8 +1,12 @@
 refreshPosts = (key) ->
   posts = Session.get 'posts'
+  offsets = Session.get 'offsets'
   if posts? and posts[key]?
     posts[key] = null
     Session.set 'posts', posts
+  if offsets? and offsets[key]?
+    offsets[key] = 0
+    Session.set 'offsets', offsets
 
 Template.nav.post = ->
   Session.get 'post'

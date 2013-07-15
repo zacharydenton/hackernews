@@ -63,7 +63,7 @@ body {
 
 .loading {
   text-align: center;
-  margin-top: @font-size-large;
+  margin: @font-size-large 0;
   font-weight: 600;
 
   i {
@@ -183,6 +183,14 @@ ul.posts-list {
       color: @gray;
       text-decoration: none;
       .clearfix;
+
+      &.next {
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
 
       .controls {
         position: absolute;

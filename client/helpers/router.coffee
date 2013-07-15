@@ -13,6 +13,11 @@ Meteor.Router.add
     if post? and post._id isnt post_id
       Session.set 'post', null
     Session.set 'post_id', post_id
+    offsets = Session.get('offsets') ? {}
+    offsets[Meteor.Router.page()] = 0
+    haveMore = Session.get('haveMore') ? {}
+    haveMore[Meteor.Router.page()] = true
+    Session.set 'offsets', offsets
     'post_page'
   '/posts/:post_id/read': as: 'post_read', to: (post_id) ->
     Session.set 'post_id', post_id

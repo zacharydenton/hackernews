@@ -3,6 +3,9 @@
 <ul class="posts-list">
   {{{posts}}}
 </ul>
+{{#if receivingData}}
+{{> loading}}
+{{/if}}
 {{else}}
 {{> loading}}
 {{/if}}
