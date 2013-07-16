@@ -59,13 +59,21 @@ fetchPosts = (opts) ->
     Session.set 'posts', posts
     Session.set 'receivingData', false
 
-Template.posts_top.topHandle =
-  params:
-    sortby: 'points desc'
-    filter:
-      fields:
-        create_ts: '[NOW-24HOURS TO NOW]'
-        type: "submission"
+Template.posts_top.topHandle = ->
+  result =
+    params:
+      sortby: 'points desc'
+      filter:
+        fields:
+          type: "submission"
+  scope = Session.get 'scope'
+  if scope is 'day'
+    result.params.filter.fields.create_ts = '[NOW-24HOURS TO NOW]'
+  else if scope is 'week'
+    result.params.filter.fields.create_ts = '[NOW-7DAYS TO NOW]'
+  else if scope is 'year'
+    result.params.filter.fields.create_ts = '[NOW-1YEAR TO NOW]'
+  result
 
 Template.posts_new.newHandle =
   params:

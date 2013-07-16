@@ -12,8 +12,8 @@
     <input type="text" placeholder="Search" autofocus>
   </form>
   {{else}}
-  {{#if currentList}}
   <ul class="navbar-nav nav">
+  {{#if currentList}}
     <li class="dropdown">
     <a href="{{currentList.path}}" data-target="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{currentList.title}} <b class="caret"></b></a>
     <ul class="dropdown-menu" role="menu">
@@ -22,8 +22,18 @@
       {{/each}}
     </ul>
     </li>
-  </ul>
   {{/if}}
+  {{#if active "posts_top"}}
+    <li class="dropdown">
+    <a href="{{posts_topPath name}}" data-target="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{currentScope.title}} <b class="caret"></b></a>
+    <ul class="dropdown-menu" role="menu">
+      {{#each otherScopes}}
+      <li><a href="{{posts_topPath name}}">{{title}}</a></li>
+      {{/each}}
+    </ul>
+    </li>
+  {{/if}}
+  </ul>
   {{#if post}}
   <p class="pull-left navbar-text">
   <i class="icon-up-open"></i> <span class="points">{{ post.points }}</span> <i class="icon-down-open"></i>

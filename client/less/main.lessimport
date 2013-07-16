@@ -72,6 +72,10 @@ body {
         }
       }
     }
+
+    .dropdown:nth-child(2) {
+      margin-left: 15px;
+    }
   }
 
   .icons.nav {
@@ -360,24 +364,24 @@ ul.posts-list {
   }
 }
 
-.read, .text {
+.read {
   padding: 10px 15px;
   padding-top: 0;
 
-	img {
-		display: block;
-		margin: 15px auto;
-		box-shadow: 0 0 15px;
-		max-width: 100%;
-	}
-}
+  img {
+    display: block;
+    margin: 15px auto;
+    box-shadow: 0 0 15px;
+    max-width: 100%;
+  }
 
-.text {
-  p {
-    margin: 10px 0;
+  &.raw {
+    p {
+      margin: 10px 0;
 
-    &:last-child {
-      margin-bottom: 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }

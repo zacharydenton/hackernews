@@ -3,7 +3,17 @@ Meteor.Router.beforeRouting = ->
 
 Meteor.Router.add
   '/': 'posts_front'
-  '/top': 'posts_top'
+  '/top/:scope?': as: 'posts_top', to: (scope) ->
+    scope = "day" unless scope?
+    if scope != Session.get('scope')
+      posts = Session.get('posts') ? {}
+      posts['posts_top'] = null
+      Session.set 'posts', posts
+      offsets = Session.get('offsets') ? {}
+      offsets['posts_top'] = 0
+      Session.set 'offsets', offsets
+    Session.set 'scope', scope
+    'posts_top'
   '/new': 'posts_new'
   '/ask': 'posts_ask'
   '/search': 'posts_search'

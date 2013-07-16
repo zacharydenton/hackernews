@@ -17,6 +17,12 @@
       margin-right: 1px;
     }
 
+    .navbar-nav {
+      .dropdown:nth-child(2) {
+        margin-left: 10px;
+      }
+    }
+
     .navbar-text {
       display: inline-block;
     }

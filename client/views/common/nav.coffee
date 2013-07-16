@@ -5,6 +5,13 @@ allLists = [
   {title: "Ask HN", name: "posts_ask"},
 ]
 
+allScopes = [
+  {title: "All Time", name: "all"},
+  {title: "Year", name: "year"},
+  {title: "Week", name: "week"},
+  {title: "Day", name: "day"},
+]
+
 refreshPosts = (key) ->
   posts = Session.get 'posts'
   offsets = Session.get 'offsets'
@@ -28,11 +35,23 @@ Template.nav.searching = ->
 Template.nav.reading = ->
   Meteor.Router.page() == 'post_read'
 
+currentItem = (currentName, items) ->
+  (item for item in items when item.name is currentName)[0]
+
+otherItems = (currentName, items) ->
+  (item for item in items when item.name isnt currentName)
+
 Template.nav.currentList = ->
-  (page for page in allLists when Meteor.Router.page() is page.name)[0]
+  currentItem Meteor.Router.page(), allLists
 
 Template.nav.otherLists = ->
-  (page for page in allLists when Meteor.Router.page() isnt page.name)
+  otherItems Meteor.Router.page(), allLists
+
+Template.nav.currentScope = ->
+  currentItem Session.get('scope'), allScopes
+
+Template.nav.otherScopes = ->
+  otherItems Session.get('scope'), allScopes
 
 Template.nav.events
   'click .refresh': (e) ->
