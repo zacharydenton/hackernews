@@ -3,15 +3,15 @@ html, body {
 }
 
 body {
-  padding-top: 52px;
+  padding-top: @navbar-height;
 }
 
 .navbar {
   .navbar-brand {
-    padding: 10px;
+    padding: 9px 10px;
     padding-left: 0;
     margin-left: 0;
-    height: 52px;
+    height: @navbar-height;
 
     &:active, &:hover {
       #path3007, #path3011, #path3013 {
@@ -20,15 +20,69 @@ body {
     }
   }
 
-  .nav {
+  .navbar-text {
+    margin: 0;
+    padding: 9px 0;
+    font-size: @font-size-large;
+    line-height: 32px;
+    color: @navbar-link-color;
+    display: none;
+
+    .points {
+      color: @brand-info;
+      font-weight: 600;
+    }
+  }
+
+  .dropdown {
+    font-weight: 600;
+
+    ul {
+      li {
+        a {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .navbar-nav {
+    .dropdown-toggle {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .open .dropdown-toggle {
+      background-color: transparent;
+    }
+
+    .dropdown-menu {
+      margin: 0;
+      padding: 0;
+
+      li {
+        border-bottom: 1px solid @gray-lighter;
+
+        a {
+          padding: 15px 10px;
+        }
+
+        &:last-child {
+          border: 0;
+        }
+      }
+    }
+  }
+
+  .icons.nav {
     margin-right: -10px;
 
     li {
       a {
-        padding: 10px;
+        padding: 9px 6px;
         line-height: 32px;
         font-size: 28px;
-        height: 52px;
+        height: @navbar-height;
 
         &:active, &:hover {
           color: @brand-info;
@@ -306,7 +360,7 @@ ul.posts-list {
   }
 }
 
-.read {
+.read, .text {
   padding: 10px 15px;
   padding-top: 0;
 
@@ -316,6 +370,16 @@ ul.posts-list {
 		box-shadow: 0 0 15px;
 		max-width: 100%;
 	}
+}
+
+.text {
+  p {
+    margin: 10px 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .divider {

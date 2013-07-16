@@ -1,3 +1,10 @@
+allLists = [
+  {title: "Front Page", name: "posts_front"},
+  {title: "Top Posts", name: "posts_top"},
+  {title: "New Posts", name: "posts_new"},
+  {title: "Ask HN", name: "posts_ask"},
+]
+
 refreshPosts = (key) ->
   posts = Session.get 'posts'
   offsets = Session.get 'offsets'
@@ -20,6 +27,12 @@ Template.nav.searching = ->
 
 Template.nav.reading = ->
   Meteor.Router.page() == 'post_read'
+
+Template.nav.currentList = ->
+  (page for page in allLists when Meteor.Router.page() is page.name)[0]
+
+Template.nav.otherLists = ->
+  (page for page in allLists when Meteor.Router.page() isnt page.name)
 
 Template.nav.events
   'click .refresh': (e) ->

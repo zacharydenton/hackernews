@@ -1,5 +1,5 @@
 <template name="post_item">
-<a class="post-item" href="{{link}}">
+<a class="post-item" href="{{commentsLink}}">
   <div class="controls">
     <div class="valign">
       <div class="top">
@@ -19,7 +19,11 @@
     {{#if domain}}<span class="domain">({{domain}})</span>{{/if}}<br />
     <span class="comments">{{num_comments}} comments</span>
   </div>
+  {{#if url}}
+  <div onclick="javascript: window.location='{{readLink}}'; return false;" class="image">
+  {{else}}
   <div class="image">
+  {{/if}}
     <div class="valign">
       <i class="icon-right-open-big"></i>
     </div>

@@ -71,8 +71,8 @@
 @padding-small-vertical:         5px;
 @padding-small-horizontal:       10px;
 
-@border-radius-base:             0px;
-@border-radius-large:            3px;
+@border-radius-base:             3px;
+@border-radius-large:            5px;
 @border-radius-small:            2px;
 
 @component-active-bg:            @brand-primary;

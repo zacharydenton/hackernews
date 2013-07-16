@@ -1,7 +1,12 @@
-Template.post_item.link = ->
+Template.post_item.commentsLink = ->
   id = @_id ? @hnsearch_id
   return "" unless id?
   Meteor.Router.post_pagePath id
+
+Template.post_item.readLink = ->
+  id = @_id ? @hnsearch_id
+  return "" unless id?
+  Meteor.Router.post_readPath id
 
 Template.post_item.external_link = ->
   if @url?
@@ -11,9 +16,3 @@ Template.post_item.external_link = ->
   else
     "http://news.ycombinator.com/item?id=#{@id}"
 
-Template.post_item.events =
-  'click .image': (e) ->
-    id = @id ? @hnsearch_id
-    if id?
-      e.preventDefault()
-      Meteor.Router.to Meteor.Router.post_readPath(id)

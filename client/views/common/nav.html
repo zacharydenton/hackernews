@@ -12,9 +12,25 @@
     <input type="text" placeholder="Search" autofocus>
   </form>
   {{else}}
-  <ul class="nav navbar-nav pull-right">
+  {{#if currentList}}
+  <ul class="navbar-nav nav">
+    <li class="dropdown">
+    <a href="{{currentList.path}}" data-target="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{currentList.title}} <b class="caret"></b></a>
+    <ul class="dropdown-menu" role="menu">
+      {{#each otherLists}}
+      <li><a href="{{namedRoute name}}">{{title}}</a></li>
+      {{/each}}
+    </ul>
+    </li>
+  </ul>
+  {{/if}}
+  {{#if post}}
+  <p class="pull-left navbar-text">
+  <i class="icon-up-open"></i> <span class="points">{{ post.points }}</span> <i class="icon-down-open"></i>
+  </p>
+  {{/if}}
+  <ul class="nav icons navbar-nav pull-right">
     <li><a class="search" href="#"><i class="icon-search"></i></a></li>
-    <li><a class="refresh" href="#"><i class="icon-arrows-cw"></i></a></li>
     {{#if article}}
     {{#if reading}}
     <li><a href="{{post_pagePath post._id}}"><i class="icon-comment-alt"></i></a></li>
@@ -22,6 +38,7 @@
     <li><a href="{{post_readPath post._id}}"><i class="icon-newspaper"></i></a></li>
     {{/if}}
     {{/if}}
+    <li><a class="refresh" href="#"><i class="icon-arrows-cw"></i></a></li>
   </ul>
   {{/if}}
 </div>

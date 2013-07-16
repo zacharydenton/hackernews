@@ -13,5 +13,8 @@ Handlebars.registerHelper 'active', (path) ->
 Handlebars.registerHelper 'ago', (datetime) ->
   moment(datetime).fromNow()
 
+Handlebars.registerHelper 'namedRoute', (name) ->
+  Meteor.Router["#{name}Path"]()
+
 Handlebars.registerHelper 'svgSupported', ->
   Modernizr.svg
