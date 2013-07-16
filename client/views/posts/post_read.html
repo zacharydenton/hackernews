@@ -11,11 +11,15 @@
   </div>
   {{/with}}
 </div>
-{{#if text}}
 <div class="read">
-{{{text}}}
-</div>
+{{#if error}}
+{{> load_error}}
+{{else}}
+{{#if text}}
+  {{{text}}}
 {{else}}
 {{> loading}}
 {{/if}}
+{{/if}}
+</div>
 </template>

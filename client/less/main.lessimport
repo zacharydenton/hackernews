@@ -77,7 +77,7 @@ body {
   float: left;
   width: @sidebarWidth;
   border-right: 4px solid @gray-lighter;
-  background-color: #eee;
+  background-color: #f4f4f4;
 
   .meta {
     color: @gray-light;
