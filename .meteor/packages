@@ -10,3 +10,4 @@ coffeescript
 http
 underscore
 router
+spiderable
