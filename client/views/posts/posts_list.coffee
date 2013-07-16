@@ -93,24 +93,36 @@ Template.posts_ask.askHandle = ->
   result
 
 Template.posts_search.searchHandle = ->
-  params:
-    q: Session.get 'search'
-    filter:
-      fields:
-        type: "submission"
-    weights:
+  result =
+    params:
+      q: Session.get 'search'
+      filter:
+        fields:
+          type: "submission"
+  sortBy = Session.get 'sortBy'
+  if sortBy is 'points'
+    result.params.sortby = 'points desc'
+  else if sortBy is 'comments'
+    result.params.sortby = 'num_comments desc'
+  else if sortBy is 'oldest'
+    result.params.sortby = 'create_ts asc'
+  else if sortBy is 'newest'
+    result.params.sortby = 'create_ts desc'
+  else
+    result.params.weights =
       title: 1.1
       text: 0.7
       url: 1.0
       domain: 2.0
       username: 0.1
       type: 0.0
-    boosts:
+    result.params.boosts =
       fields:
         points: 0.15
         num_comments: 0.15
       functions:
         "pow(2,div(div(ms(create_ts,NOW),3600000),72))": 200.0
+  result
 
 Deps.autorun ->
   post = Session.get 'post'
@@ -121,6 +133,10 @@ Deps.autorun ->
 
 Template.posts_list.receivingData = ->
   Session.get 'receivingData'
+
+Template.posts_list.haveMore = ->
+  haveMore = Session.get('haveMore') ? {}
+  haveMore[Meteor.Router.page()] ? true
 
 Template.posts_list.posts = ->
   posts = Session.get('posts')

@@ -23,6 +23,16 @@
     </ul>
     </li>
   {{/if}}
+  {{#if currentSort}}
+    <li class="dropdown">
+    <a href="{{currentSort.path}}" data-target="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{currentSort.title}} <b class="caret"></b></a>
+    <ul class="dropdown-menu" role="menu">
+      {{#each otherSorts}}
+      <li><a href="{{namedRoute currentPage query name}}">{{title}}</a></li>
+      {{/each}}
+    </ul>
+    </li>
+  {{/if}}
   {{#if currentScope}} 
     <li class="dropdown">
     <a href="{{namedRoute currentPage name}}" data-target="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{currentScope.title}} <b class="caret"></b></a>

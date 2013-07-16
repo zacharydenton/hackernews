@@ -4,23 +4,30 @@ Meteor.Router.beforeRouting = ->
 scopedPostList = (name, scope) ->
   scope = "day" unless scope?
   if scope != Session.get('scope')
-    posts = Session.get('posts') ? {}
-    posts[name] = null
-    Session.set 'posts', posts
-    offsets = Session.get('offsets') ? {}
-    offsets[name] = 0
-    Session.set 'offsets', offsets
     Session.set 'scope', scope
+    refreshPosts name
   name
 
 Meteor.Router.add
   '/': 'posts_front'
   '/new': 'posts_new'
-  '/search': 'posts_search'
   '/top/:scope?': as: 'posts_top', to: (scope) ->
     scopedPostList 'posts_top', scope
   '/ask/:scope?': as: 'posts_ask', to: (scope) ->
     scopedPostList 'posts_ask', scope
+  '/search/:query/:sortBy?': as: 'posts_search', to: (query, sortBy) ->
+    name = Meteor.Router.page()
+    refresh = false
+    if query != Session.get('search')
+      Session.set 'search', query
+      refresh = true
+    sortBy = "relevance" unless sortBy?
+    if sortBy != Session.get('sortBy')
+      Session.set 'sortBy', sortBy
+      refresh = true
+    if refresh
+      refreshPosts 'posts_search'
+    'posts_search'
   '/posts/:post_id': as: 'post_page', to: (post_id) ->
     post = Session.get 'post'
     if post? and post._id isnt post_id

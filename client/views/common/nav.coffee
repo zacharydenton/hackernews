@@ -13,15 +13,27 @@ allScopes = [
   {title: "Day", name: "day"},
 ]
 
-refreshPosts = (key) ->
+allSorts = [
+  {title: "Relevance", name: "relevance"},
+  {title: "Points", name: "points"},
+  {title: "Comments", name: "comments"},
+  {title: "Oldest First", name: "oldest"},
+  {title: "Newest First", name: "newest"},
+]
+
+@refreshPosts = (key) ->
   posts = Session.get 'posts'
   offsets = Session.get 'offsets'
+  haveMore = Session.get 'haveMore'
   if posts? and posts[key]?
     posts[key] = null
     Session.set 'posts', posts
   if offsets? and offsets[key]?
     offsets[key] = 0
     Session.set 'offsets', offsets
+  if haveMore? and haveMore[key]?
+    haveMore[key] = true
+    Session.set 'haveMore', haveMore
 
 Template.nav.post = ->
   Session.get 'post'
@@ -55,6 +67,16 @@ Template.nav.currentScope = ->
 Template.nav.otherScopes = ->
   otherItems Session.get('scope'), allScopes
 
+Template.nav.currentSort = ->
+  return null unless Meteor.Router.page() in ['posts_search']
+  currentItem Session.get('sortBy'), allSorts
+
+Template.nav.otherSorts = ->
+  otherItems Session.get('sortBy'), allSorts
+
+Template.nav.query = ->
+  Session.get 'search'
+
 Template.nav.events
   'click .refresh': (e) ->
     e.preventDefault()
@@ -73,9 +95,7 @@ Template.nav.events
     if e.keyCode == 13 # enter
       e.preventDefault()
       e.stopPropagation()
-      Session.set 'search', e.srcElement.value
       Session.set 'searching', false
-      refreshPosts 'posts_search'
-      Meteor.Router.to 'posts_search'
+      Meteor.Router.to 'posts_search', e.srcElement.value
   'blur .search-form input': (e) ->
     Session.set 'searching', false

@@ -386,6 +386,10 @@ ul.posts-list {
   }
 }
 
+.no-results {
+  margin: @font-size-large;
+}
+
 .divider {
   padding: 5px 15px;
   text-transform: uppercase;

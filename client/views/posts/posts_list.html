@@ -7,7 +7,11 @@
 {{> loading}}
 {{/if}}
 {{else}}
+{{#if haveMore}}
 {{> loading}}
+{{else}}
+{{> no_results}}
+{{/if}}
 {{/if}}
 </template>
 
