@@ -59,10 +59,10 @@ fetchPosts = (opts) ->
     Session.set 'posts', posts
     Session.set 'receivingData', false
 
-Template.posts_top.topHandle = ->
+scopedHandle = ->
   result =
     params:
-      sortby: 'points desc'
+      sortby: 'points desc, num_comments desc'
       filter:
         fields:
           type: "submission"
@@ -71,9 +71,14 @@ Template.posts_top.topHandle = ->
     result.params.filter.fields.create_ts = '[NOW-24HOURS TO NOW]'
   else if scope is 'week'
     result.params.filter.fields.create_ts = '[NOW-7DAYS TO NOW]'
+  else if scope is 'month'
+    result.params.filter.fields.create_ts = '[NOW-1MONTH TO NOW]'
   else if scope is 'year'
     result.params.filter.fields.create_ts = '[NOW-1YEAR TO NOW]'
   result
+
+Template.posts_top.topHandle = ->
+  scopedHandle()
 
 Template.posts_new.newHandle =
   params:
@@ -82,14 +87,10 @@ Template.posts_new.newHandle =
       fields:
         type: "submission"
 
-Template.posts_ask.askHandle =
-  params:
-    q: '"Ask HN"'
-    sortby: 'num_comments desc'
-    filter:
-      fields:
-        create_ts: '[NOW-24HOURS TO NOW]'
-        type: "submission"
+Template.posts_ask.askHandle = ->
+  result = scopedHandle()
+  result.params.q = '"Ask HN"'
+  result
 
 Template.posts_search.searchHandle = ->
   params:

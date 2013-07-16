@@ -8,6 +8,7 @@ allLists = [
 allScopes = [
   {title: "All Time", name: "all"},
   {title: "Year", name: "year"},
+  {title: "Month", name: "month"},
   {title: "Week", name: "week"},
   {title: "Day", name: "day"},
 ]
