@@ -49,6 +49,7 @@ Template.nav.otherLists = ->
   otherItems Meteor.Router.page(), allLists
 
 Template.nav.currentScope = ->
+  return null unless Meteor.Router.page() in ['posts_top', 'posts_ask']
   currentItem Session.get('scope'), allScopes
 
 Template.nav.otherScopes = ->

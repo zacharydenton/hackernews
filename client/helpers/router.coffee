@@ -15,13 +15,12 @@ scopedPostList = (name, scope) ->
 
 Meteor.Router.add
   '/': 'posts_front'
-  '/top/:scope?': as: 'posts_top', to: (scope) ->
-    scopedPostList 'posts_top', scope
-  '/new': 'posts_new'
-  '/ask/:scope?': as: 'posts_ask', to: (scope) ->
-    scopedPostList 'posts_ask', scope
   '/new': 'posts_new'
   '/search': 'posts_search'
+  '/top/:scope?': as: 'posts_top', to: (scope) ->
+    scopedPostList 'posts_top', scope
+  '/ask/:scope?': as: 'posts_ask', to: (scope) ->
+    scopedPostList 'posts_ask', scope
   '/posts/:post_id': as: 'post_page', to: (post_id) ->
     post = Session.get 'post'
     if post? and post._id isnt post_id
