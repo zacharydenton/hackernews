@@ -4,7 +4,10 @@
   Session.set 'post_article', null
   Session.set 'loadError', false
   if post.url?
-    $.getJSON "http://viewtext.org/api/text?callback=?", url: post.url, (data) ->
+    params =
+      url: post.url
+      rl: false
+    $.getJSON "http://viewtext.org/api/text?callback=?", params, (data) ->
       Session.set 'post_article', (data.content ? " ")
       Session.set 'loadError', (not data.content?)
   else

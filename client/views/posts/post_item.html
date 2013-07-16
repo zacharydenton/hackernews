@@ -19,7 +19,7 @@
     {{#if domain}}<span class="domain">({{domain}})</span>{{/if}}<br />
     <span class="comments">{{num_comments}} comments</span>
   </div>
-  {{#if url}}
+  {{#if isArticle}}
   <div onclick="javascript: window.location='{{readLink}}'; return false;" class="image">
   {{else}}
   <div class="image">
