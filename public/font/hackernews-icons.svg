@@ -3,8 +3,8 @@
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>Copyright (C) 2012 by original authors @ fontello.com</metadata>
 <defs>
-<font id="hackerreader-icons" horiz-adv-x="1000" >
-<font-face font-family="hackerreader-icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<font id="hackernews-icons" horiz-adv-x="1000" >
+<font-face font-family="hackernews-icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
 <missing-glyph horiz-adv-x="1000" />
 <glyph glyph-name="search" unicode="&#xe80b;" d="M0 8l186 186 2 0q-66 105-66 229 0 178 125 303t303 125 303-125 125-303-125-303-303-125q-105 0-197 49l-193-193z m311 415q0-99 70-168t168-69 168 69 70 168-70 168-168 69-168-69-70-168z" horiz-adv-x="977" />
 <glyph glyph-name="arrows-cw" unicode="&#xe810;" d="M0-150l0 402 402 0-160-160q107-107 258-107 125 0 222 75t130 192l139 0q-35-174-173-288t-317-114q-207 0-353 146z m10 598q35 174 173 288t317 114q207 0 353-146l146 146 0-402-402 0 160 160q-107 107-258 107-125 0-222-75t-130-192l-139 0z" horiz-adv-x="1000" />

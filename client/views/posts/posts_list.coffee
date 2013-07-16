@@ -43,7 +43,7 @@ fetchPosts = (opts) ->
   params =
     limit: postsPerPage
     start: offset
-  if opts.params?
+  if opts? and opts.params?
     params = $.extend params, opts.params
   $.getJSON "http://api.thriftdb.com/api.hnsearch.com/items/_search?callback=?", params, (data, status, xhr) ->
     posts = Session.get('posts') ? {}
@@ -127,9 +127,9 @@ Template.posts_search.searchHandle = ->
 Deps.autorun ->
   post = Session.get 'post'
   if post? and post.title?
-    document.title = "#{post.title} - HackerReader"
+    document.title = "#{post.title} - Hacker News"
   else
-    document.title = 'HackerReader'
+    document.title = 'Hacker News'
 
 Template.posts_list.receivingData = ->
   Session.get 'receivingData'
@@ -160,10 +160,11 @@ Template.posts_list.rendered = ->
       loading = Session.get 'receivingData'
       haveMore = Session.get('haveMore') ? {}
       haveMore = haveMore[Meteor.Router.page()] ? true
+      padding = 500
       if $(window).width() > 480
-        loadMore = @scrollHeight - $(this).height() - @scrollTop < 500
+        loadMore = @scrollHeight - $(this).height() - @scrollTop <= padding
       else
-        loadMore = $('.content').height() - $(window).height() - $(window).scrollTop() < 500
+        loadMore = $('.content').height() - $(window).height() - $(window).scrollTop() <= padding
       if loadMore and not loading and haveMore
         increasePostOffset()
         fetchPosts(template.data)

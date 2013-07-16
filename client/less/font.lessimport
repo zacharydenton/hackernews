@@ -1,17 +1,17 @@
 @font-face {
-  font-family: 'hackerreader-icons';
-  src: url('/font/hackerreader-icons.eot?51305327');
-  src: url('/font/hackerreader-icons.eot?51305327#iefix') format('embedded-opentype'),
-  url('/font/hackerreader-icons.woff?51305327') format('woff'),
-  url('/font/hackerreader-icons.ttf?51305327') format('truetype'),
-  url('/font/hackerreader-icons.svg?51305327#hackerreader-icons') format('svg');
+  font-family: 'hackernews-icons';
+  src: url('/font/hackernews-icons.eot?51305327');
+  src: url('/font/hackernews-icons.eot?51305327#iefix') format('embedded-opentype'),
+  url('/font/hackernews-icons.woff?51305327') format('woff'),
+  url('/font/hackernews-icons.ttf?51305327') format('truetype'),
+  url('/font/hackernews-icons.svg?51305327#hackernews-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 [class^="icon-"] {
   &:before {
-    font-family: "hackerreader-icons";
+    font-family: "hackernews-icons";
     font-style: normal;
     font-weight: normal;
     speak: none;
