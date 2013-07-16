@@ -103,6 +103,13 @@ Template.posts_search.searchHandle = ->
       functions:
         "pow(2,div(div(ms(create_ts,NOW),3600000),72))": 200.0
 
+Deps.autorun ->
+  post = Session.get 'post'
+  if post? and post.title?
+    document.title = "#{post.title} - HackerReader"
+  else
+    document.title = 'HackerReader'
+
 Template.posts_list.receivingData = ->
   Session.get 'receivingData'
 
