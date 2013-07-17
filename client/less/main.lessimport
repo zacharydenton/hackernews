@@ -85,7 +85,7 @@ body {
       a {
         padding: 9px 6px;
         line-height: 32px;
-        font-size: 28px;
+        font-size: 26px;
         height: @navbar-height;
 
         &:active, &:hover {
@@ -95,14 +95,8 @@ body {
         i {
           position: relative;
 
-          &.icon-newspaper {
-            top: -1px;
-          }
-
-          &.icon-arrows-cw {
-            top: -2px;
-            font-size: 26px;
-            line-height: 26px;
+          &.icon-search {
+            font-size: 30px;
           }
         }
       }
@@ -223,7 +217,9 @@ body {
 }
 
 .content {
-  margin-left: @sidebarWidth;
+  position: relative;
+  left: 0;
+  right: 0;
 }
 
 ul.posts-list {

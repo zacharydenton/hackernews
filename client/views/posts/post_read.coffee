@@ -2,7 +2,6 @@
   post = Session.get 'post'
   return unless post?
   Session.set 'post_article', null
-  Session.set 'loadError', false
   if post.url?
     params =
       url: post.url

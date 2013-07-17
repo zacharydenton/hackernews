@@ -1,0 +1,17 @@
+{
+  "name": "Hacker News",
+  "description": "An open-source Hacker News app inspired by BaconReader.",
+  "launch_path": "/",
+  "icons": {
+    "48": "/icon-48.png",
+    "72": "/icon-72.png",
+    "96": "/icon-96.png",
+    "144": "/icon-144.png",
+    "512": "/icon-512.png"
+  },
+  "developer": {
+    "name": "Zach Denton",
+    "url": "http://zacharydenton.com/"
+  },
+  "default_locale": "en"
+}

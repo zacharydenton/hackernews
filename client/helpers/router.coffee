@@ -36,5 +36,6 @@ Meteor.Router.add
     'post_page'
   '/posts/:post_id/read': as: 'post_read', to: (post_id) ->
     Session.set 'post_id', post_id
+    Session.set 'loadError', false
     'post_read'
 
