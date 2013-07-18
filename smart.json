@@ -1,6 +1,7 @@
 {
   "packages": {
     "router": {},
-    "font-awesome": {}
+    "font-awesome": {},
+    "npm": {}
   }
 }
