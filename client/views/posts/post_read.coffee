@@ -4,6 +4,8 @@
   Session.set 'post_article', null
   if post.url?
     Meteor.call 'readability', post.url, (err, data) ->
+      if data.content
+        data.content = $(data.content).removeClass().html()
       Session.set 'post_article', (data.content or " ")
       Session.set 'loadError', (not data.content)
   else
