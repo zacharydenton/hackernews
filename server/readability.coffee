@@ -5,7 +5,12 @@ Meteor.methods
   'readability': (url) ->
     fut = new Future()
     readability.read url, (err, page) ->
-      fut.ret
-        title: page.getTitle()
-        content: page.getContent()
+      if err or not page?
+        fut.ret
+          title: null
+          content: null
+      else
+        fut.ret
+          title: page.getTitle()
+          content: page.getContent()
     fut.wait()
