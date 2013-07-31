@@ -1,7 +1,3 @@
 {
-  "packages": {
-    "router": {},
-    "font-awesome": {},
-    "npm": {}
-  }
+  "packages": {}
 }

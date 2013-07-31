@@ -1,7 +1,8 @@
-Future = Npm.require 'fibers/future'
+Future = Npm.require('fibers/future')
 
 Meteor.methods
   'readability': (url) ->
+    @unblock()
     fut = new Future()
     opts =
       params:

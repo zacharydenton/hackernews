@@ -25,3 +25,6 @@ Template.post_read.text = ->
   else
     fetchPost(Session.get('post_id'))
   return article
+
+Template.post_read.rendered = ->
+  $(@find('.read')).children().removeClass()
