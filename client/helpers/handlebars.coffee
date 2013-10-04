@@ -21,4 +21,5 @@ Handlebars.registerHelper 'svgSupported', ->
   Modernizr.svg
 
 Handlebars.registerHelper 'isCrawler', ->
-  window.location.href.indexOf('_escaped_fragment_') >= 0
+  navigator.userAgent.toLowerCase().indexOf('phantomjs') >= 0
+
