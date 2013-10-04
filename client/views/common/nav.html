@@ -1,10 +1,14 @@
 <template name="nav">
 <div class="navbar navbar-fixed-top">
   <a class="navbar-brand" href="/">
+    {{#if isCrawler}}
+    <h1>Hacker News</h1>
+    {{else}}
     {{#if svgSupported}}
     {{> logo_svg}}
     {{else}}
     <img class="logo" src="/logo.png" />
+    {{/if}}
     {{/if}}
   </a>
   {{#if searching}}

@@ -4,7 +4,6 @@ html, body {
 
 body {
   padding-top: @navbar-height;
-  overflow-x: hidden;
 }
 
 .navbar {
@@ -13,6 +12,12 @@ body {
     padding-left: 0;
     margin-left: 0;
     height: @navbar-height;
+
+    h1 {
+      font-size: 32px;
+      line-height: 32px;
+      margin: 0;
+    }
 
     &:active, &:hover {
       #path3007, #path3011, #path3013 {
@@ -410,6 +415,7 @@ ul.comments {
       padding: 10px;
       border-bottom: 1px solid @gray-lighter;
       box-sizing: border-box;
+      overflow-x: hidden;
 
       &.with-replies {
         cursor: pointer;
