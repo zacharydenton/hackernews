@@ -21,5 +21,4 @@ Handlebars.registerHelper 'svgSupported', ->
   Modernizr.svg
 
 Handlebars.registerHelper 'isCrawler', ->
-  console.log window.location.href.indexOf('_escaped_fragment_')
   window.location.href.indexOf('_escaped_fragment_') >= 0
