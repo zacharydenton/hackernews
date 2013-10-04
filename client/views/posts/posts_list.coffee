@@ -127,7 +127,7 @@ Template.posts_search.searchHandle = ->
 Deps.autorun ->
   post = Session.get 'post'
   if post? and post.title?
-    document.title = "#{post.title} - Hacker News"
+    document.title = "#{post.title}"
   else
     document.title = 'Hacker News'
 

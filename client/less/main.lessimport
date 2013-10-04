@@ -96,6 +96,7 @@ body {
           position: relative;
 
           &.icon-search {
+						top: 1px;
             font-size: 30px;
           }
         }
