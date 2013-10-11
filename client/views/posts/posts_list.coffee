@@ -14,16 +14,9 @@ fetchFrontPage = ->
   Session.set 'receivingData', true
   offsets = Session.get('offsets') ? {}
   offset = offsets[Meteor.Router.page()] ? 0
-  params =
-    q: "select * from feed where url='http://hnsearch.com/bigrss' limit #{postsPerPage} offset #{offset}"
-    format: 'json'
-  $.getJSON "http://query.yahooapis.com/v1/public/yql?callback=?", params, (data) ->
+  Meteor.call 'frontPage', postsPerPage, offset, (err, results) ->
     posts = Session.get('posts') ? {}
     posts[Meteor.Router.page()] ?= ""
-    if data.query? and data.query.results? and data.query.results.item?
-      results = (result for result in data.query.results.item when result.hnsearch_id?)
-    else
-      results = []
     if results.length > 0
       posts[Meteor.Router.page()] += renderPosts results
       Session.set 'posts', posts
