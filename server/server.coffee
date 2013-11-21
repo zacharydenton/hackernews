@@ -5,14 +5,14 @@ class Cache
     @data = {}
 
   get: (key) ->
-    @data[key].value if @data[key]?
+    @data[key].value if @data[key]? and not @data[key].expired
 
   put: (key, value, duration) =>
     Meteor.clearTimeout(@data[key].timeout) if @data[key]?
-    @data[key] = value: value
-    remove = =>
-      @delete key
-    @data[key].timeout = Meteor.setTimeout(remove, duration)
+    @data[key] = value: value, expired: false
+    expire = =>
+      @data[key].expired = true
+    @data[key].timeout = Meteor.setTimeout(expire, duration)
 
   delete: (key) ->
     delete @data[key]
@@ -43,4 +43,7 @@ Meteor.methods
       cache.put('frontPage', results, 600000)
       return results.slice(offset, offset + count)
     else
-      return []
+      if cache.data['frontPage']?
+        return cache.data['frontPage'].value.slice(offset, offset + count)
+      else
+        return []

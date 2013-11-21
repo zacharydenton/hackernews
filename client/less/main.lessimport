@@ -102,7 +102,6 @@ body {
           position: relative;
 
           &.icon-search {
-						top: 1px;
             font-size: 30px;
           }
         }
@@ -117,6 +116,8 @@ body {
 
 .sidebar, .content {
   overflow-y: auto;
+  overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
   .box-sizing(border-box);
 }
 
@@ -352,6 +353,7 @@ ul.posts-list {
 
 .post {
   padding: 10px 15px;
+  overflow-x: hidden;
 
   h1 {
     margin-top: 10px;
