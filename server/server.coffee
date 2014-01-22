@@ -38,7 +38,7 @@ Meteor.methods
       format: 'json'
     res = Meteor.http.get api, params: params
     data = res.data
-    if data.query? and data.query.results? and data.query.results.item?
+    if data?.query?.results?.item?
       results = (result for result in data.query.results.item when result.hnsearch_id?)
       cache.put('frontPage', results, 600000)
       return results.slice(offset, offset + count)

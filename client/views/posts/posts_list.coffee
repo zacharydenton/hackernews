@@ -26,7 +26,7 @@ fetchFrontPage = ->
       Session.set 'haveMore', haveMore
     Session.set 'receivingData', false
 
-fetchPosts = (opts) ->
+fetchPosts = (opts, callback) ->
   if Meteor.Router.page() == 'posts_front'
     return fetchFrontPage()
   offsets = Session.get('offsets') ? {}
@@ -45,10 +45,12 @@ fetchPosts = (opts) ->
     if results.length > 0
       posts[Meteor.Router.page()] += renderPosts results
       Session.set 'posts', posts
+      callback? true
     else
       haveMore = Session.get('haveMore') ? {}
       haveMore[Meteor.Router.page()] = false
       Session.set 'haveMore', haveMore
+      callback? false
     Session.set 'posts', posts
     Session.set 'receivingData', false
 
@@ -149,7 +151,7 @@ Template.posts_list.rendered = ->
     if currentScroll?
       $('.content').scrollTop currentScroll
       Session.set 'currentScroll', null
-    infiniteScroll = _.debounce((e) ->
+    infiniteScroll = _.debounce((e) =>
       loading = Session.get 'receivingData'
       haveMore = Session.get('haveMore') ? {}
       haveMore = haveMore[Meteor.Router.page()] ? true
@@ -160,10 +162,31 @@ Template.posts_list.rendered = ->
         loadMore = $('.content').height() - $(window).height() - $(window).scrollTop() <= padding
       if loadMore and not loading and haveMore
         increasePostOffset()
-        fetchPosts(template.data)
+        fetchPosts template.data, =>
+          if @selected?
+            $(@findAll('a.post-item')[@selected]).focus()
     , 15)
     $('.content').scroll infiniteScroll
     $(window).scroll infiniteScroll
+
+  unless @keysBound
+    @keysBound = true
+    @selected = -1
+    moveFocus = (offset) =>
+      links = @findAll('a.post-item')
+      return unless links?
+      @selected = Math.min(Math.max(@selected + offset, 0), links.length)
+      $(links[@selected]).focus()
+    Mousetrap.bind 'j', =>
+      moveFocus +1
+    Mousetrap.bind 'k', =>
+      moveFocus -1
+    onePage = =>
+      Math.floor($('.outer-wrapper').outerHeight() / $(@find('a.post-item')).outerHeight())
+    Mousetrap.bind 'ctrl+d', =>
+      moveFocus +onePage()
+    Mousetrap.bind 'ctrl+u', =>
+      moveFocus -onePage()
 
 Template.posts_list.events =
   'click .posts-list li': (e) ->

@@ -66,6 +66,28 @@ Deps.autorun ->
 Template.comments.comments = ->
   Session.get 'comments'
 
+Template.comments.rendered = ->
+  unless @keysBound
+    @keysBound = true
+    @selected = -1
+    moveFocus = (offset) =>
+      comments = @findAll('.comment:not(.hidden)')
+      return unless comments?
+      @selected = Math.min(Math.max(@selected + offset, 0), comments.length)
+      $(comments[@selected]).focus()
+    Mousetrap.bind 'j', =>
+      moveFocus +1
+    Mousetrap.bind 'k', =>
+      moveFocus -1
+    Mousetrap.bind 'ctrl+d', =>
+      moveFocus +5
+    Mousetrap.bind 'ctrl+u', =>
+      moveFocus -5
+    Mousetrap.bind 'enter', =>
+      comments = @findAll('.comment:not(.hidden)')
+      return unless comments? and @selected?
+      comments[@selected].click()
+
 Template.comments.events =
   'click a': (e) ->
     window.open $(e.srcElement).attr 'href'
@@ -77,9 +99,11 @@ Template.comments.events =
     if $comments.css('display') is 'none'
       $comments.show()
       $replies_hidden.hide()
+      $comments.find('.comment').removeClass('hidden')
     else
       $comments.hide()
       $replies_hidden.show()
+      $comments.find('.comment').addClass('hidden')
     false
 
 Template.comment.points = ->
